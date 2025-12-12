@@ -510,7 +510,13 @@ const newElementMyList = () => {
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
 
+// se ne propongono 2 versioni: la prima "myListVoider" elimina qualsiasi cosa ci sia nella lista non ordinata con id "myList"
+// mentre la seconda "myListLiVoider" elimina selettivamente i tag <li> nella lista non ordinata con id "myList" (preservando
+// il div del file di esempio fornito)
+
 const myListVoider = () => (document.querySelector("#myList").innerHTML = "");
+
+const myListLiVoider = () => document.querySelectorAll("#myList li").forEach((li) => li.remove());
 
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
