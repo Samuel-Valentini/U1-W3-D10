@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  background: linear-gradient(90deg, rgba(89, 89, 201, 1) 35%, rgba(0, 170, 204, 1) 100%);
+  border-bottom: 1px solid rgba(89, 89, 201, 1);
+}
+
+main {
+  width: 80%;
+  margin-inline: auto;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  padding-block: 1em;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+div {
+  padding-block: 1em;
+  text-align: justify;
+  border: 1px solid rgba(89, 89, 201, 1);
+  border-radius: 5px;
+  margin-top: 1em;
+  padding-block: 1em;
+  padding-inline: 1.5em;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgba(89, 89, 201, 1);
+  color: white;
+}
+
+th:last-of-type {
+  background-color: #ddd;
+  color: black;
+}
+
+#myList div {
+  margin-block: 1em;
+}

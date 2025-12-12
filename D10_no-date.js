@@ -15,7 +15,7 @@ console.log("online");
   Crea una variabile chiamata "sum" e assegnaci il risultato della somma tra i valori 10 e 20.
 */
 
-// Per il seguente esercizio possiamo utilizzare *let* o *const* in base alla necessità di lasciare la variabile modificabile
+// -----------------------> Per il seguente esercizio possiamo utilizzare *let* o *const* in base alla necessità di lasciare la variabile modificabile
 //  in seguito dal programma. Non ravvisando questa necessità utilizzeremo const.
 
 const sum = 10 + 20;
@@ -148,8 +148,7 @@ const isThisAnEmail = (str) => {
             } else {
               if (str.lastIndexOf(".") === str.length - 1) {
                 return false;
-              }
-              {
+              } else {
                 return true;
               }
             }
@@ -369,11 +368,10 @@ const onlyTheYears = () => {
   Scrivi una funzione chiamata "onlyInLastMillennium" che ritorna solamente i film prodotto nel millennio scorso contenuti nell'array "movies" fornito.
 */
 
-// NOTA BENE: -------------------------> il II millennio si considererà finito il 31/12/2000 <-------------------------
-
 const onlyInLastMillennium = () => {
   let arr = [];
   movies.forEach((obj) => {
+    // NOTA BENE: -------------------------> il II millennio si considererà finito il 31/12/2000 <-------------------------
     if (parseInt(obj.Year) < 2001) {
       arr.push(obj);
     }
@@ -583,7 +581,7 @@ const tree = (n) => {
   }
 };
 
-// tree(10);
+tree(10);
 
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
