@@ -123,6 +123,11 @@ const onlyLetters = (str) => {
   for (let i = 0; i < str.length; i++) {
     if (isNaN(parseInt(str[i]))) {
       str1 = str1 + str[i];
+
+      // nell'esempio dell'esercizio fornito i due spazi ravvicinati vengono sostituiti con uno solo,
+      // modifichiamo la funzione per replicare il comportamento dell'esempio.
+    } else if (str[i - 1] === " " && str[i + 1] === " ") {
+      i = i + 1;
     }
   }
   return str1;
@@ -310,18 +315,35 @@ const deleteProp = (obj, str) => {
   Scrivi una funzione chiamata "newestMovie" che trova il film più recente nell'array "movies" fornito.
 */
 
-// considerata la struttura dell'array fornito non si valuta la possibilità che ci sia più di un film recente con la stessa data
-
 const newestMovie = () => {
   let recentYear = parseInt(movies[0].Year);
   let newestMov = movies[0];
-  for (i = 1; i < movies.length; i++) {
+  for (let i = 1; i < movies.length; i++) {
     if (parseInt(movies[i].Year) > recentYear) {
       recentYear = parseInt(movies[i].Year);
       newestMov = movies[i];
     }
   }
-  return newestMov;
+
+  // valutiamo ora se nell'array ci sono più film prodotti nell'anno identificato
+  let counter = 0;
+  for (let i = 0; i < movies.length; i++) {
+    if (parseInt(movies[i].Year) === recentYear) {
+      counter += 1;
+    }
+  }
+
+  if (counter === 1) {
+    return newestMov;
+  } else {
+    let arrayOfNewest = [];
+    for (let i = 0; i < movies.length; i++) {
+      if (parseInt(movies[i].Year) === recentYear) {
+        arrayOfNewest.push(movies[i]);
+      }
+    }
+    return arrayOfNewest;
+  }
 };
 
 /* ESERCIZIO 13
@@ -521,7 +543,7 @@ const halfTree = (n) => {
   }
 };
 
-halfTree(3);
+// halfTree(3);
 
 /* ESERCIZIO 28
   Crea una funzione chiamata "tree" che riceve un numero come parametro e costruisce un albero di "*" (asterischi) dell'altezza fornita.
@@ -555,7 +577,7 @@ const tree = (n) => {
   }
 };
 
-tree(10);
+// tree(10);
 
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
@@ -576,6 +598,6 @@ const isItPrime = (num) => {
   }
 };
 
-console.log(isItPrime(100003));
+// console.log(isItPrime(100003));
 
 /* Questo array viene usato per gli esercizi. Non modificarlo. */
