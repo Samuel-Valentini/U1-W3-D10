@@ -324,8 +324,6 @@ const newestMovie = () => {
   return newestMov;
 };
 
-console.log(movies);
-
 /* ESERCIZIO 13
   Scrivi una funzione chiamata countMovies che ritorna il numero di film contenuti nell'array "movies" fornito.
 */
@@ -345,8 +343,6 @@ const onlyTheYears = () => {
   return arr;
 };
 
-console.log(onlyTheYears());
-
 /* ESERCIZIO 15
   Scrivi una funzione chiamata "onlyInLastMillennium" che ritorna solamente i film prodotto nel millennio scorso contenuti nell'array "movies" fornito.
 */
@@ -362,8 +358,6 @@ const onlyInLastMillennium = () => {
   });
   return arr;
 };
-
-console.log(onlyInLastMillennium());
 
 /* ESERCIZIO 16
   Scrivi una funzione chiamata "sumAllTheYears" che ritorna la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array "movies" fornito.
@@ -422,6 +416,9 @@ const searchAndDivide = (str) => {
    privo dell'elemento nella posizione ricevuta come parametro.
 */
 
+// visto che il nome è removeIndex il numero verrà trattato come un indice (posizione = indice) differentemente
+// sarebbe sufficiente sottrarre 1 alla posizione o sommare 1 all'indice nel caso in cui posizione 1 venisse condierata di indice 0
+
 const removeIndex = (index) => {
   movies.splice(index, 1);
   return movies;
@@ -433,29 +430,74 @@ const removeIndex = (index) => {
   Scrivi una funzione per selezionare l'elemento dotato di id "container" all'interno della pagina.
 */
 
+// si forniscono due possibili soluzioni
+
+const containerSelectorId = () => {
+  const containerElement = document.getElementById("container");
+  return containerElement;
+};
+
+const containerSelectorQuery = () => {
+  const containerElement = document.querySelector("#container");
+  return containerElement;
+};
+
 /* ESERCIZIO 21
   Scrivi una funzione per selezionare ogni tag <td> all'interno della pagina.
 */
+
+const tdSelector = () => {
+  const td = document.getElementsByTagName("td");
+  return td;
+};
 
 /* ESERCIZIO 22
   Scrivi una funzione che, tramite un ciclo, stampa in console il testo contenuto in ogni tag <td> all'interno della pagina.
 */
 
+const tdPrinter = () => {
+  const td = document.querySelectorAll("td");
+  for (i = 0; i < td.length; i++) {
+    console.log(td[i].innerText);
+  }
+};
+
 /* ESERCIZIO 23
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
 */
+
+const redBackgroundLink = () => {
+  const a = document.querySelectorAll("a");
+  for (i = 0; i < a.length; i++) {
+    a[i].style.backgroundColor = "red";
+  }
+};
 
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
 
+const newElementMyList = () => {
+  const newLi = document.createElement("li");
+  newLi.innerText = "nuovo elemento";
+  const myList = document.querySelector("#myList");
+  myList.appendChild(newLi);
+};
+
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
 
+const myListVoider = () => (document.querySelector("#myList").innerHTML = "");
+
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
+
+const addClassTestToTr = () => {
+  const tr = document.querySelectorAll("tr");
+  tr.forEach((trElement) => trElement.classList.add("test"));
+};
 
 // [EXTRA] JS Avanzato
 
@@ -471,6 +513,16 @@ const removeIndex = (index) => {
 
 */
 
+const halfTree = (n) => {
+  let branch = "";
+  for (let i = 0; i < n; i++) {
+    branch += "*";
+    console.log(branch);
+  }
+};
+
+halfTree(3);
+
 /* ESERCIZIO 28
   Crea una funzione chiamata "tree" che riceve un numero come parametro e costruisce un albero di "*" (asterischi) dell'altezza fornita.
 
@@ -483,8 +535,47 @@ const removeIndex = (index) => {
 
 */
 
+const tree = (n) => {
+  const rowWidth = 1 + (n - 1) * 2;
+  for (let i = 0; i < n; i++) {
+    let numberAsterisk = 1 + 2 * i;
+    let numberSpaces = (rowWidth - numberAsterisk) / 2;
+    let branch = "";
+    for (let l = 0; l < numberSpaces; l++) {
+      branch += " ";
+    }
+    for (let m = 0; m < numberAsterisk; m++) {
+      branch += "*";
+    }
+    for (let n = 0; n < numberSpaces; n++) {
+      branch += " ";
+    }
+
+    console.log(branch);
+  }
+};
+
+tree(10);
+
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
+
+const isItPrime = (num) => {
+  let dividers = [];
+  for (let i = 1; i <= num; i++) {
+    if (num % i === 0) {
+      dividers.push(i);
+    }
+  }
+
+  if (dividers[0] === 1 && dividers[1] === num) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+console.log(isItPrime(100003));
 
 /* Questo array viene usato per gli esercizi. Non modificarlo. */
