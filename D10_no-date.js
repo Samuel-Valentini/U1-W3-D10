@@ -138,32 +138,40 @@ const onlyLetters = (str) => {
 */
 
 const isThisAnEmail = (str) => {
-  if (str.includes("@")) {
-    if (str.includes(".", str.indexOf("@"))) {
-      if (str.indexOf("@") === str.lastIndexOf("@")) {
-        if (str.lastIndexOf(".") - str.indexOf("@") > 1) {
-          if (str.indexOf(".", str.indexOf("@")) - str.indexOf("@") > 1) {
-            if (str.indexOf("@") === 0) {
-              return false;
-            } else {
-              if (str.lastIndexOf(".") === str.length - 1) {
-                return false;
-              } else {
-                return true;
-              }
-            }
-          } else {
-            return false;
-          }
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
+  if (
+    str.includes("@") &&
+    str.includes(".", str.indexOf("@")) &&
+    str.indexOf("@") === str.lastIndexOf("@") &&
+    str.lastIndexOf(".") - str.indexOf("@") > 1 &&
+    str.indexOf(".", str.indexOf("@")) - str.indexOf("@") > 1 &&
+    str.indexOf("@") !== 0 &&
+    str.lastIndexOf(".") !== str.length - 1 &&
+    !str.includes(".@") &&
+    !str.includes(",") &&
+    !str.includes(";") &&
+    !str.includes("(") &&
+    !str.includes(")") &&
+    !str.includes("{") &&
+    !str.includes("}") &&
+    !str.includes("[") &&
+    !str.includes("]") &&
+    !str.includes("^") &&
+    !str.includes("$") &&
+    !str.includes("|") &&
+    !str.includes("?") &&
+    !str.includes("*") &&
+    !str.includes("+") &&
+    !str.includes("'") &&
+    !str.includes('"') &&
+    !str.includes("~") &&
+    !str.includes("&") &&
+    !str.includes("%") &&
+    !str.includes("£") &&
+    !str.includes("€") &&
+    !str.includes("!") &&
+    !str.includes("..")
+  ) {
+    return true;
   } else {
     return false;
   }
