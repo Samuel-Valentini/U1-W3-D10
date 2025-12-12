@@ -62,9 +62,13 @@ me.skill.pop();
   Crea una funzione chiamata "dice": deve generare un numero casuale tra 1 e 6.
 */
 
+const dice = () => Math.floor(Math.random() * 6 + 1);
+
 /* ESERCIZIO 2
   Crea una funzione chiamata "whoIsBigger" che riceve due numeri come parametri e ritorna il maggiore dei due.
 */
+
+const whoIsBigger = (num1, num2) => (num1 > num2 ? num1 : num2);
 
 /* ESERCIZIO 3
   Crea una funzione chiamata "splitMe" che riceve una stringa come parametro e ritorna un'array contenente ogni parola della stringa.
@@ -72,10 +76,41 @@ me.skill.pop();
   Es.: splitMe("I love coding") => ritorna ["I", "Love", "Coding"]
 */
 
+const splitMe = (str) => {
+  let array = [];
+  if (typeof str === "string") {
+    str = str.trim();
+
+    array = str.split(" ");
+    if (str !== "") {
+      for (i = 0; i < array.length; i++) {
+        let word = array[i];
+
+        let newWord = word[0].toUpperCase() + word.slice(1);
+        array[i] = newWord;
+      }
+    }
+  } else {
+    return array;
+  }
+
+  return array;
+};
+
 /* ESERCIZIO 4
   Crea una funzione chiamata "deleteOne" che riceve una stringa e un booleano come parametri.
   Se il valore booleano è true la funzione deve ritornare la stringa senza il primo carattere, altrimenti la deve ritornare senza l'ultimo.
 */
+
+const deleteOne = (str, bool) => {
+  if (bool) {
+    str = str.slice(1);
+  } else {
+    str = str.slice(0, -1);
+  }
+
+  return str;
+};
 
 /* ESERCIZIO 5
   Crea una funzione chiamata "onlyLetters" che riceve una stringa come parametro e la ritorna eliminando tutte le cifre numeriche.
@@ -83,9 +118,52 @@ me.skill.pop();
   Es.: onlyLetters("I have 4 dogs") => ritorna "I have dogs"
 */
 
+const onlyLetters = (str) => {
+  let str1 = "";
+  for (let i = 0; i < str.length; i++) {
+    if (isNaN(parseInt(str[i]))) {
+      str1 = str1 + str[i];
+    }
+  }
+  return str1;
+};
+
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
+
+const isThisAnEmail = (str) => {
+  if (str.includes("@")) {
+    if (str.includes(".", str.indexOf("@"))) {
+      if (str.indexOf("@") === str.lastIndexOf("@")) {
+        if (str.lastIndexOf(".") - str.indexOf("@") > 1) {
+          if (str.indexOf(".", str.indexOf("@")) - str.indexOf("@") > 1) {
+            if (str.indexOf("@") === 0) {
+              return false;
+            } else {
+              if (str.lastIndexOf(".") === str.length - 1) {
+                return false;
+              }
+              {
+                return true;
+              }
+            }
+          } else {
+            return false;
+          }
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+};
 
 /* ESERCIZIO 8
   Scrivi una funzione chiamata "rollDice" che riceve un numero come parametro.
@@ -99,6 +177,18 @@ me.skill.pop();
       values: [3, 3, 4]
   }
 */
+
+const rollDice = (num) => {
+  const obj = { sum: 0, values: [] };
+
+  for (let i = 0; i < num; i++) {
+    let diceresult = dice();
+    obj.sum += diceresult;
+    obj.values[i] = diceresult;
+  }
+
+  return obj;
+};
 
 // Arrays & Oggetti
 
